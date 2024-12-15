@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Weather</title>
+    <link rel="icon" href="/img/weather.png">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+            {{>header}}
+    <div class="main-content">
+
+        <p>Use this site to get your weather!</p>
+
+        <form>
+            <input placeholder="Location">
+            <select name="" id="temperature">
+                <option value="m">Metric</option>
+                <option value="s">Scientific</option>
+                <option value="f">Fahrenheit</option>
+            </select>
+            <button>Search</button>
+        </form>
+
+        <p id="message-1"></p>
+        {{!-- <p id="message-2"></p> --}}
+
+        <div class="weather--container">
+            {{!-- <div class="location--information">
+                <h2 class="state">North Carolina</h2>
+                <p class="city">Charlotte</p>
+            </div>
+            <div class="weather--img">
+                <img src="https://cdn.worldweatheronline.com/images/wsymbols01_png_64/wsymbol_0002_sunny_intervals.png" alt="Weather icon">
+            </div>
+            <div class="temperature--information">
+                <p class="temperature--metric">Temperature on </p>
+                <p class="temperature">10</p>
+                <p class="weather--description">weather description</p>
+            </div> --}}
+
+        </div>
+    </div>
+
+    {{>footer}}
+
+    <script src="/js/app.js"></script>
+</body>
+
+</html>

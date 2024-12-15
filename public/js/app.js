@@ -14,32 +14,31 @@ weatherForm.addEventListener("submit", (event) => {
   messageOne.textContent = "Loading...";
   // messageTwo.textContent = "";
 
-  fetch(
-    `http://localhost:3000/weather?address=${location}&temperature=${temperature}`
-  ).then((response) => {
-    response.json().then((data) => {
-      if (data.error) {
-        messageOne.textContent = data.error;
-      } else {
-        // console.log(forecast);
+  fetch(`/weather?address=${location}&temperature=${temperature}`).then(
+    (response) => {
+      response.json().then((data) => {
+        if (data.error) {
+          messageOne.textContent = data.error;
+        } else {
+          // console.log(forecast);
 
-        messageOne.textContent = "";
+          messageOne.textContent = "";
 
-        let unitMetric = "";
+          let unitMetric = "";
 
-        switch (data.forecast.request.unit) {
-          case "m":
-            unitMetric = "Metric";
-            break;
-          case "s":
-            unitMetric = "Scientific";
-            break;
-          case "f":
-            unitMetric = "Fahrenheit";
-            break;
-        }
-        // messageTwo.textContent = data.forecast;
-        weatherElement.innerHTML = `
+          switch (data.forecast.request.unit) {
+            case "m":
+              unitMetric = "Metric";
+              break;
+            case "s":
+              unitMetric = "Scientific";
+              break;
+            case "f":
+              unitMetric = "Fahrenheit";
+              break;
+          }
+          // messageTwo.textContent = data.forecast;
+          weatherElement.innerHTML = `
             <div class="location--information">
               <h2 class="state">${data.forecast.location.region}</h2>
               <p class="city">${data.forecast.location.name}</p>
@@ -53,7 +52,8 @@ weatherForm.addEventListener("submit", (event) => {
                 <p class="weather--description">${data.forecast.current.weather_descriptions[0]}</p>
             </div>
         `;
-      }
-    });
-  });
+        }
+      });
+    }
+  );
 });
